@@ -2,26 +2,37 @@
 What is the simplest way to convert a roll of 3d6 into 2d6?
 
 
+## Why did I do it?
 
 Five year late response to Stand-up Maths: https://www.youtube.com/watch?v=hBBftD7gq7Y
 
 
+## What does it do?
+
 This rolls 3d6 in right angle trough oriented pointed away from the user, so that
 each die has two upward faces, one on the right and one on the left.
 
-The roll is converted into 2d6, by summing the right faces for one die and left
-faces for the other, those sums are then put through the function (6 - (sum % 6),
+The roll is converted into 2d6 by summing the right faces for one die and left
+faces for the other, those sums are then put through the function (6 - (sum % 6)),
 to get the final left and right roll values.
 
-
-This program rolls all possible permutations this way, and then compares the
-roll distributions to that of rolling real 2d6.
-
+This program generates all possible permutations that could be rolled this way,
+and then compares the roll distributions to that of rolling real 2d6.
 
 
-Following is the output of the program:
+## Summary of Results
+
+This doesn't perfectly match the distribution of rolling 2d6, but it the biggest
+deviation is a mere 0.5%.  When summing the 2d6 being simulated, the distribution
+is very slightly flatter.  When considering the values as a pair, the biggest
+deviation is 0.2%.  For table top games, this is well within reasonable tolerances,
+and this deviation may actually be less than the deviation caused by wear on the
+dice themselves.
 
 
+## Program Output
+
+```
 3d6 rolled in a right angle trough, where the left and right sides are treated as
 separate d6 rolls, using (6 - (sum % 6)), to get a range from 1 to 6.
 
@@ -72,3 +83,4 @@ Pairs       3d6      2d6
 (6, 4)      2.9%     2.8%
 (6, 5)      2.9%     2.8%
 (6, 6)      2.6%     2.8%
+```
